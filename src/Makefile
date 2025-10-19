@@ -14,8 +14,5 @@ $(TARGET)-objs := \
 # product
 ccflags-y += -Werror -Wall
 
-# clang
-ccflags-y += -Wno-unused-but-set-variable -Wno-sometimes-uninitialized -Wno-frame-address
-
 # develop
 #ccflags-y += -Wall -Wno-unused-function
