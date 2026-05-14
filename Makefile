@@ -20,16 +20,21 @@ define KernelPackage/nft-fullcone
   DEPENDS:=@IPV6 +kmod-nft-core +kmod-nf-conntrack +kmod-nf-conntrack6
   TITLE:=Netfilter nf_tables fullcone expression support
   FILES:= $(PKG_BUILD_DIR)/nft_fullcone.ko
-  KCONFIG:= CONFIG_NFT_FULLCONE=y CONFIG_NF_NAT=y CONFIG_NF_NAT_IPV6=y CONFIG_NF_CONNTRACK_EVENTS=y CONFIG_NF_CONNTRACK_CHAIN_EVENTS=y
+  KCONFIG:= \
+    CONFIG_NFT_FULLCONE=y \
+    CONFIG_NF_NAT=y \
+    CONFIG_NF_NAT_IPV6=y \
+    CONFIG_NF_CONNTRACK_EVENTS=y \
+    CONFIG_NF_CONNTRACK_CHAIN_EVENTS=y
   PROVIDES:=$(PKG_NAME)
   AUTOLOAD:=$(call AutoProbe,nft_fullcone)
 endef
 
 define KernelPackage/nft-fullcone/Description
-Kernel module adds the fullcone expression that you can use
-to perform NAT in the RFC3489-compatible full cone SNAT flavour.
-Currently only UDP traffic is supported for full-cone NAT.
-For other protos FULLCONENAT is equivalent to MASQUERADE.
+  Kernel module adds the fullcone expression that you can use
+  to perform NAT in the RFC3489-compatible full cone SNAT flavour.
+  Currently only UDP traffic is supported for full-cone NAT.
+  For other protos FULLCONENAT is equivalent to MASQUERADE.
 endef
 
 # make use of all CPUs
